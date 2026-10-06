@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { contactHandler } from '../server';
+import { contactHandler } from '../server.ts';
 import type { ApiFunctionRequest, ApiFunctionResponse } from './function-types';
 
 const requestCounts = new Map<string, { count: number; resetAt: number }>();

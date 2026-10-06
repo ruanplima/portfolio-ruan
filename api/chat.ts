@@ -1,5 +1,5 @@
 import type { Request, Response } from 'express';
-import { chatHandler } from '../server';
+import { chatHandler } from '../server.ts';
 import type { ApiFunctionRequest, ApiFunctionResponse } from './function-types';
 
 export default async function handler(
