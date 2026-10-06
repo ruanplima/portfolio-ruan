@@ -11,6 +11,11 @@
     "clean": "rm -rf dist server.js",
     "lint": "tsc --noEmit"
   },
+  "allowScripts": {
+    "@google/genai@2.27.0": false,
+    "esbuild@0.28.2": true,
+    "protobufjs@7.6.6": false
+  },
   "dependencies": {
     "@google/genai": "^2.4.0",
     "@tailwindcss/vite": "^4.3.3",
