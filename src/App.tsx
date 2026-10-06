@@ -4,7 +4,13 @@
  */
 
 import React from 'react';
-import { BrowserRouter, Routes, Route, useOutletContext } from 'react-router-dom';
+import {
+  BrowserRouter,
+  Routes,
+  Route,
+  useOutletContext,
+} from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -43,6 +49,7 @@ export default function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>
+      <Analytics />
     </BrowserRouter>
   );
 }
