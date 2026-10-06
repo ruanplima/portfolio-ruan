@@ -5,6 +5,7 @@
 
 import React from 'react';
 import { BrowserRouter, Routes, Route, useOutletContext } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 import { Layout } from './components/Layout';
 import { HomePage } from './pages/HomePage';
 import { AboutPage } from './pages/AboutPage';
@@ -24,25 +25,28 @@ const HomeWrapper: React.FC = () => {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          {/* Home */}
-          <Route index element={<HomeWrapper />} />
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            {/* Home */}
+            <Route index element={<HomeWrapper />} />
 
-          {/* Dedicated Subpages */}
-          <Route path="sobre" element={<AboutPage />} />
-          <Route path="servicos" element={<ServicesPage />} />
-          <Route path="projetos" element={<ProjectsPage />} />
-          <Route path="projetos/:slug" element={<ProjectDetailPage />} />
-          <Route path="processo" element={<ProcessPage />} />
-          <Route path="contato" element={<ContactPage />} />
+            {/* Dedicated Subpages */}
+            <Route path="sobre" element={<AboutPage />} />
+            <Route path="servicos" element={<ServicesPage />} />
+            <Route path="projetos" element={<ProjectsPage />} />
+            <Route path="projetos/:slug" element={<ProjectDetailPage />} />
+            <Route path="processo" element={<ProcessPage />} />
+            <Route path="contato" element={<ContactPage />} />
 
-          {/* 404 Not Found Fallback */}
-          <Route path="404" element={<NotFoundPage />} />
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+            {/* 404 Not Found Fallback */}
+            <Route path="404" element={<NotFoundPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+      <Analytics />
+    </>
   );
 }
