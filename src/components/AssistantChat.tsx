@@ -120,13 +120,16 @@ export const AssistantChat: React.FC<AssistantChatProps> = ({
         body: JSON.stringify(payload),
       });
 
+      const data = await res.json().catch(() => null);
       if (!res.ok) {
-        throw new Error('Falha na resposta do servidor.');
+        throw new Error(
+          data?.error ||
+            `A API do assistente respondeu com HTTP ${res.status}.`,
+        );
       }
 
-      const data = await res.json();
       const assistantReply =
-        data.reply ||
+        data?.reply ||
         'Desculpe, não consegui gerar uma resposta agora. Por favor, envie uma mensagem pelo WhatsApp!';
 
       setMessages((prev) => [

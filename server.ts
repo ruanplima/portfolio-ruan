@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url';
 import { GoogleGenAI } from '@google/genai';
 import { Resend } from 'resend';
 import { rateLimit } from 'express-rate-limit';
+import type { Request, Response } from 'express';
 
 dotenv.config();
 
@@ -17,7 +18,7 @@ const resend = process.env.RESEND_API_KEY
   ? new Resend(process.env.RESEND_API_KEY)
   : null;
 const contactRecipient = 'ruanpinheirolima2003@gmail.com';
-const contactRateLimit = rateLimit({
+export const contactRateLimit = rateLimit({
   windowMs: 15 * 60 * 1000,
   limit: 5,
   standardHeaders: 'draft-8',
@@ -45,7 +46,7 @@ const escapeHtml = (value: string) =>
 
 app.use(express.json());
 
-app.post('/api/contact', contactRateLimit, async (req, res) => {
+export const contactHandler = async (req: Request, res: Response) => {
   const { name, contact, projectType, message = '' } = req.body ?? {};
   const allowedProjectTypes = new Set([
     'Landing Page',
@@ -173,7 +174,9 @@ app.post('/api/contact', contactRateLimit, async (req, res) => {
       error: 'Não foi possível enviar a mensagem agora. Tente novamente em instantes.',
     });
   }
-});
+};
+
+app.post('/api/contact', contactRateLimit, contactHandler);
 
 const apiKey = process.env.GEMINI_API_KEY;
 let ai: GoogleGenAI | null = null;
@@ -190,7 +193,7 @@ if (apiKey) {
 }
 
 // Endpoint do Chatbot com Gemini 3.8 Flash
-app.post('/api/chat', async (req, res) => {
+export const chatHandler = async (req: Request, res: Response) => {
   try {
     const { messages } = req.body;
     if (!messages || !Array.isArray(messages)) {
@@ -296,7 +299,9 @@ Diretrizes de Resposta:
       message: error?.message || 'Erro inesperado'
     });
   }
-});
+};
+
+app.post('/api/chat', chatHandler);
 
 async function startServer() {
   const isDev = process.env.NODE_ENV !== 'production';
@@ -321,4 +326,6 @@ async function startServer() {
   });
 }
 
-startServer();
+if (!process.env.VERCEL) {
+  startServer();
+}
