@@ -80,6 +80,37 @@ export const SERVICES: Service[] = [
 
 export const PROJECTS: Project[] = [
   {
+    id: 'merito-assessoria-juridica',
+    slug: 'merito-assessoria-juridica',
+    title: 'Mérito Assessoria e Soluções Jurídicas',
+    category: 'Sites Institucionais',
+    shortDescription: 'Site institucional criado para fortalecer a presença digital da Mérito, apresentar sua assessoria jurídica e facilitar o contato com clientes.',
+    fullDescription: 'Desenvolvido em parceria com a Mérito Assessoria e Soluções Jurídicas, o site apresenta a marca e sua atuação em Goiânia - GO. O projeto organiza as principais áreas jurídicas e os diferenciais do escritório em uma presença digital profissional, com caminhos claros para quem busca atendimento.',
+    problem: 'A Mérito buscava divulgar melhor seus serviços e dar mais força à marca no ambiente digital, oferecendo a clientes e empresas um canal próprio para conhecer o escritório e sua atuação.',
+    solution: 'Criamos um site institucional que comunica a experiência e os valores da Mérito, apresenta suas áreas de atuação e direciona os visitantes aos canais de atendimento. A estrutura prioriza clareza, confiança e uma navegação simples em diferentes dispositivos.',
+    technologies: ['Site Institucional', 'Design Responsivo', 'SEO', 'WhatsApp'],
+    tags: ['Assessoria Jurídica', 'Site Institucional', 'Goiânia - GO', 'Design Responsivo'],
+    metrics: 'Presença digital • Áreas de atuação • Atendimento direto',
+    year: '2026',
+    clientType: 'Assessoria Jurídica',
+    featured: true,
+    aspectRatio: 'wide',
+    demoUrl: 'https://www.juridicomerito.com/',
+    keyFeatures: [
+      'Apresentação institucional da Mérito e de sua experiência',
+      'Informações sobre as áreas de atuação jurídica',
+      'Canais de contato e atendimento pelo WhatsApp',
+      'Conteúdo sobre a equipe, os diferenciais e a localização em Goiânia - GO',
+      'Navegação adaptada para celulares e computadores'
+    ],
+    mockupTheme: {
+      accentColor: '#C8A96B',
+      bgStyle: 'from-[#20231f] to-[#111310]',
+      tagline: 'Assessoria & Soluções Jurídicas'
+    },
+    relatedSlugs: ['stone-cler', 'marcia-menon', 'drogaria-consolacao']
+  },
+  {
     id: 'stone-cler',
     slug: 'stone-cler',
     title: 'Stone Cler',
